@@ -5,9 +5,9 @@ import * as THREE from 'three';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 
 const AGENTS = [
-  { id: 'orchestrator', label: 'Orchestrator', position: [0, 1.5, 0], color: '#f0a500' },
-  { id: 'defi', label: 'DeFi Agent', position: [-2, -1, 1], color: '#AA3BFF' },
-  { id: 'deployer', label: 'Deployer', position: [2, -1, -1], color: '#FF2A2A' }
+  { id: 'orchestrator', label: 'Orchestrator', position: [0, 0, 0], color: '#f0a500' },
+  { id: 'defi', label: 'DeFi Agent', position: [-2.5, -1.5, 0], color: '#AA3BFF' },
+  { id: 'deployer', label: 'Deployer', position: [2.5, -1.5, 0], color: '#FF2A2A' }
 ];
 
 // Helper to draw connecting lines
@@ -125,7 +125,7 @@ const Scene = () => {
 export const SwarmVisualizer = () => {
   return (
     <div className="absolute inset-0 z-0 bg-space-950">
-      <Canvas camera={{ position: [0, 0, 7], fov: 45 }}>
+      <Canvas camera={{ position: [0, 0, 9], fov: 60 }}>
         <ambientLight intensity={0.2} />
         <pointLight position={[10, 10, 10]} intensity={1.5} />
         <Scene />
