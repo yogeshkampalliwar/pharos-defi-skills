@@ -15,7 +15,7 @@ const cardVariants = {
     boxShadow: "0px 15px 35px rgba(0,240,255,0.15)",
     borderColor: "rgba(0,240,255,0.4)",
     backgroundColor: "rgba(10, 15, 30, 0.7)",
-    transition: { type: "spring", stiffness: 400, damping: 25 }
+    transition: { type: "spring" as const, stiffness: 400, damping: 25 }
   }
 };
 
@@ -33,7 +33,7 @@ const healthCardVariants = {
     boxShadow: "0px 20px 50px rgba(0,240,255,0.4)",
     borderColor: "rgba(0,240,255,0.8)",
     backgroundColor: "rgba(0, 240, 255, 0.15)",
-    transition: { type: "spring", stiffness: 400, damping: 25 }
+    transition: { type: "spring" as const, stiffness: 400, damping: 25 }
   }
 }
 
@@ -44,7 +44,7 @@ const iconVariants = {
 
 const bgIconVariants = {
   rest: { scale: 1, opacity: 0.1, rotate: 0 },
-  hover: { scale: 1.4, opacity: 0.25, rotate: -15, transition: { type: "spring", stiffness: 200, damping: 20 } }
+  hover: { scale: 1.4, opacity: 0.25, rotate: -15, transition: { type: "spring" as const, stiffness: 200, damping: 20 } }
 };
 
 export const AssetHUD = () => {
