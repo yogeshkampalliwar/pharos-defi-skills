@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-space-900: #05050A;
+  --color-space-800: #0A0A14;
+  --color-space-700: #121221;
+  --color-space-600: #1C1C30;
+  
+  --color-neon-blue: #00F0FF;
+  --color-casper-red: #FF2A2A;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-space-900 text-white font-sans overflow-hidden m-0 p-0;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-space-800/40 backdrop-blur-md border border-white/10 shadow-lg rounded-xl;
+  }
+  
+  .glass-panel-glow {
+    @apply bg-space-800/40 backdrop-blur-md border border-neon-blue/30 shadow-[0_0_15px_rgba(0,240,255,0.2)] rounded-xl;
+  }
+
+  .glass-panel-red {
+    @apply bg-space-800/40 backdrop-blur-md border border-casper-red/30 shadow-[0_0_15px_rgba(255,42,42,0.2)] rounded-xl;
+  }
+
+  .text-glow-blue {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+  }
+
+  .text-glow-red {
+    text-shadow: 0 0 10px rgba(255, 42, 42, 0.7);
+  }
+  
+  /* Custom scrollbar for orchestrator feed */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
