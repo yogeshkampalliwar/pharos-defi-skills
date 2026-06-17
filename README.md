@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# Pharos DeFi AI Skills
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modular AI Agent Skill framework for the Pharos ecosystem.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project has two parts: a working on-chain AI agent and a visual swarm dashboard.
 
-## React Compiler
+1. AI Skills Agent (agent/, skills/) - real Node.js agent connecting to Pharos Atlantic Testnet for wallet balances, network stats, and swap history.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Pharos DeFAI Swarm (src/) - React + Three.js visual dashboard simulating an autonomous AI agent network.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Wallet Balance Skill - native PHRS and ERC20 token balances
+- On-chain Price Feed Skill - block number, gas price, network stats
+- Token Swap Skill - swap execution via smart contract
+- Swap History Skill - on-chain activity tracking
+- AI Routing Logic - routes intent to correct skill
+- Visual Swarm Dashboard - animated multi-agent network UI
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Network
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Network: Pharos Atlantic Testnet
+Chain ID: 688689
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Smart Contract
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Contract Address: 0x6E7454907D72bd5eff1e93b4f37CD57Dc527D809
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Project Structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+agent - main agent entry point
+skills - balance, price, swap, router modules
+contracts - deployed Solidity contract and ABI
+src - React Three.js dashboard frontend
+
+## Run the Agent
+
+npm install
+node agent/index.cjs
+
+## Run the Dashboard
+
+npm install
+npm run dev
+
+Live demo: https://pharos-swarm.vercel.app
+
+## Built For
+
+Pharos Skill-to-Agent Hackathon 2026
