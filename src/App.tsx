@@ -116,7 +116,7 @@ export default function App() {
       } catch (chainErr: any) {
         addLog(`⚠️ Chain add skipped: ${chainErr.message}`)
       }
-      const prov = new ethers.BrowserProvider(eth)
+      const prov = new ethers.BrowserProvider(eth, { chainId: 1672, name: "pharos" })
       const sgn = await prov.getSigner()
       const addr = await sgn.getAddress()
       setProvider(prov); setSigner(sgn); setWallet(addr); setConnected(true)
