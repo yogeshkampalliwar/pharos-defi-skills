@@ -219,8 +219,17 @@ export default function App() {
           📊 Check On-Chain Price
         </button>
 
-        <button onClick={() => refreshBalance(provider!, wallet)} disabled={!connected} style={{width:'100%',padding:'16px',background:loading?'#333':'linear-gradient(135deg,#f0a500,#8B00FF)',border:'none',borderRadius:12,color:'#fff',fontWeight:'bold',fontSize:16,cursor:loading?'not-allowed':'pointer',fontFamily:'monospace',marginTop:8,letterSpacing:2}}>
-          {loading ? '⚡ EXECUTING...' : '🔄 REFRESH BALANCE'}
+        <input id="swapAmount" placeholder="Amount (e.g. 0.01)" style={{width:'100%',padding:'12px',background:'#0a0a14',border:'1px solid #333',borderRadius:10,color:'#fff',fontFamily:'monospace',fontSize:13,marginBottom:8,boxSizing:'border-box'}} />
+
+        <button onClick={() => {
+          const amt = (document.getElementById('swapAmount') as HTMLInputElement)?.value || '0.01'
+          executeRealSwap(TOKENS.PHRS.address, FACTORY_ADDRESS, amt)
+        }} disabled={!connected || loading} style={{width:'100%',padding:'16px',background:loading?'#333':'linear-gradient(135deg,#f0a500,#8B00FF)',border:'none',borderRadius:12,color:'#fff',fontWeight:'bold',fontSize:16,cursor:loading?'not-allowed':'pointer',fontFamily:'monospace',marginTop:8,letterSpacing:2}}>
+          {loading ? '⚡ EXECUTING...' : '🚀 EXECUTE SWAP'}
+        </button>
+
+        <button onClick={() => refreshBalance(provider!, wallet)} disabled={!connected} style={{width:'100%',padding:'10px',background:'transparent',border:'1px solid #333',borderRadius:10,color:'#888',fontWeight:'bold',fontSize:12,cursor:'pointer',fontFamily:'monospace',marginTop:8}}>
+          🔄 Refresh Balance
         </button>
 
         {txHash && (
