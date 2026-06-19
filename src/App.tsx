@@ -33,7 +33,7 @@ const PAIR_ABI = [
 const RAINBOW_COLORS = ['#FF0000','#FF7700','#FFFF00','#00FF00','#0000FF','#8B00FF','#FF00FF']
 
 // Real token addresses on Pharos mainnet — fill in actual deployed tokens
-const TOKENS = {
+_TOKENS = {
   PHRS: { address: 'native', symbol: 'PHRS' },
 }
 
@@ -128,7 +128,7 @@ export default function App() {
   }
 
   // Real on-chain price lookup via Pharos DEX factory
-  const checkPair = async (tokenA: string, tokenB: string) => {
+  _checkPair = async (tokenA: string, tokenB: string) => {
     if (!provider) return null
     try {
       const factory = new ethers.Contract(FACTORY_ADDRESS, FACTORY_ABI, provider)
