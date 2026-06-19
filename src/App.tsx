@@ -215,15 +215,20 @@ export default function App() {
           {CONTRACT_ADDRESS}
         </div>
 
-        <button onClick={() => checkPair(TOKENS.PHRS.address, FACTORY_ADDRESS)} disabled={!connected || loading} style={{width:'100%',padding:'12px',background:'#1a1a2e',border:'1px solid #00aaff',borderRadius:10,color:'#00aaff',fontWeight:'bold',fontSize:13,cursor:connected?'pointer':'not-allowed',fontFamily:'monospace',marginBottom:8}}>
-          📊 Check On-Chain Price
-        </button>
+        <div style={{fontSize:9,color:'#555',marginBottom:8,padding:'8px',border:'1px dashed #333',borderRadius:8}}>
+          ℹ️ Price lookup requires two ERC20 token addresses with an active liquidity pair on Pharos DEX. Swap below uses the deployed DeFiSkill contract directly.
+        </div>
 
+        <input id="tokenIn" placeholder="Token In address (0x...)" style={{width:'100%',padding:'12px',background:'#0a0a14',border:'1px solid #333',borderRadius:10,color:'#fff',fontFamily:'monospace',fontSize:12,marginBottom:8,boxSizing:'border-box'}} />
+        <input id="tokenOut" placeholder="Token Out address (0x...)" style={{width:'100%',padding:'12px',background:'#0a0a14',border:'1px solid #333',borderRadius:10,color:'#fff',fontFamily:'monospace',fontSize:12,marginBottom:8,boxSizing:'border-box'}} />
         <input id="swapAmount" placeholder="Amount (e.g. 0.01)" style={{width:'100%',padding:'12px',background:'#0a0a14',border:'1px solid #333',borderRadius:10,color:'#fff',fontFamily:'monospace',fontSize:13,marginBottom:8,boxSizing:'border-box'}} />
 
         <button onClick={() => {
+          const tIn = (document.getElementById('tokenIn') as HTMLInputElement)?.value
+          const tOut = (document.getElementById('tokenOut') as HTMLInputElement)?.value
           const amt = (document.getElementById('swapAmount') as HTMLInputElement)?.value || '0.01'
-          executeRealSwap(TOKENS.PHRS.address, FACTORY_ADDRESS, amt)
+          if (!tIn || !tOut) { addLog('❌ Enter both token addresses'); return }
+          executeRealSwap(tIn, tOut, amt)
         }} disabled={!connected || loading} style={{width:'100%',padding:'16px',background:loading?'#333':'linear-gradient(135deg,#f0a500,#8B00FF)',border:'none',borderRadius:12,color:'#fff',fontWeight:'bold',fontSize:16,cursor:loading?'not-allowed':'pointer',fontFamily:'monospace',marginTop:8,letterSpacing:2}}>
           {loading ? '⚡ EXECUTING...' : '🚀 EXECUTE SWAP'}
         </button>
